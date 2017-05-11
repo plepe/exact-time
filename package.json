@@ -1,0 +1,42 @@
+{
+  "name": "exact-time",
+  "version": "0.0.2",
+  "description": "Get the exact date and time with ease",
+  "main": "node.js",
+  "browser": "browser.js",
+  "author": "Vincenzo Greco <greco.vincenzo@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "time",
+    "date",
+    "exact",
+    "exact time",
+    "exact date",
+    "current time"
+  ],
+  "homepage": "https://github.com/vigreco/exact-time",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vigreco/exact-time.git"
+  },
+  "scripts": {
+    "build": "rollup -c > node.js && BROWSER=true rollup -c > browser.js",
+    "pretest": "standard",
+    "test": "tap --cov --100 test/*.js",
+    "prepublish": "npm run build && npm run test"
+  },
+  "files": [
+    "node.js",
+    "browser.js"
+  ],
+  "devDependencies": {
+    "rollup": "^0.41.6",
+    "rollup-plugin-replace": "^1.1.1",
+    "sinon": "^2.2.0",
+    "standard": "^10.0.2",
+    "tap": "^10.3.2"
+  },
+  "engines": {
+    "node": ">=4"
+  }
+}
