@@ -1,8 +1,10 @@
 import replace from 'rollup-plugin-replace'
 
 export default {
-  entry: 'index.js',
-  format: 'cjs',
+  input: 'index.js',
+  output: {
+    format: 'cjs'
+  },
   plugins: [
     replace({ 'process.env.BROWSER': !!process.env.BROWSER })
   ],
