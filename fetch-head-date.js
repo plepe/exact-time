@@ -1,7 +1,7 @@
-export default url => new Promise((resolve, reject) => {
+export default (host, path) => new Promise((resolve, reject) => {
   if (process.env.BROWSER) {
     const xhr = new global.XMLHttpRequest()
-    xhr.open('HEAD', url)
+    xhr.open('HEAD', host + path)
     xhr.send()
     xhr.onerror = () => reject(xhr.statusText)
     xhr.onreadystatechange = () => {
@@ -11,7 +11,7 @@ export default url => new Promise((resolve, reject) => {
     }
   } else {
     const http = require('http')
-    const req = http.request({ host: url, method: 'HEAD' }, res => {
+    const req = http.request({ host: host, path: path, method: 'HEAD' }, res => {
       resolve(res.headers.date)
     })
 

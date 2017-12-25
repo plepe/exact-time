@@ -1,7 +1,9 @@
 import fetchHeadDate from './fetch-head-date'
 
 // Use google server to retrieve the exact date and time
-const SERVER_URL = 'https://www.googleapis.com/discovery/v1/apis?fields='
+const SERVER_HOST = '//www.googleapis.com'
+const SERVER_PATH = '/discovery/v1/apis?fields='
+
 // Resync if more than an hour has passed
 const TIME_BETWEEN_REQ = 36 * 1e5
 
@@ -19,7 +21,7 @@ const getDateTime = forceNetSync => {
     })
   } else {
     lastRequestTime = Date.now()
-    return fetchHeadDate(SERVER_URL)
+    return fetchHeadDate(SERVER_HOST, SERVER_PATH)
       // take net delay into account
       .then(date => Date.parse(date) + (Date.now() - lastRequestTime))
       .then(utc => {
